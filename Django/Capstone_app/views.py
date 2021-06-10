@@ -14,31 +14,38 @@ def add_proposal(request):
         title = request.POST['title']
         project_description = request.POST['project_description']
         map_id = request.POST['map_id']
+        project_date_start = request.POST['project_date_start']
+        project_date_end = request.POST['project_date_end']
         gantt_title = request.POST['gantt_title']
         proposals = Proposal.objects.create(
-            title=title, project_description=project_description, map_id=map_id, gantt_title=gantt_title)
+            title=title, project_description=project_description, map_id=map_id, gantt_title=gantt_title, project_date_start=project_date_start, project_date_end=project_date_end)
         return redirect('add_proposal')
 
 
 def add_task(request, id):
-    if request.method == 'GET':
-        tasks = Task.objects.all()
-        details = Proposal.objects.get(id=id)
-        context = {
-            "details": details,
-            "tasks": tasks
-            }
-        return render(request, 'pages/details.html', context)
-    elif request.method == 'POST':
-        details = Proposal.objects.get(id=id)
-        gantt_title = request.POST['gantt_title']
-        Task.objects.create(taskItem=gantt_title, task_id=details)
-        return render(request, 'pages/details.html', {"details": details})
+    details = Proposal.objects.get(id=id)
+    gantt_title = request.POST['gantt_title']
+    tasks = Task.objects.all()
+    context = {
+        "details": details,
+        "tasks": tasks
+    }
+    Task.objects.create(taskItem=gantt_title, task_id=details)
+    return render(request, 'pages/details.html', context)
 
 
 def delete_task(request, id):
-    Task.objects.get(pk=id).delete()
-    return HttpResponseRedirect(reverse('add_proposal'))
+    task = Task.objects.get(id=id)
+    details = Proposal.objects.get(id=task.task_id.id)
+    print(task.task_id)
+    task.delete()
+    tasks = Task.objects.all()
+    context = {
+        "details": details,
+        "tasks": tasks
+    }
+    return render(request, 'pages/details.html', context)
+    # return redirect('home')
 
 
 def proposals(request):
@@ -61,6 +68,15 @@ def proposal_view(request, id):
     post = Proposal.objects.get(id=id)
     return render(request, 'pages/proposal_view.html', {"post": post})
 
+
 def see_details(request, id):
     details = Proposal.objects.get(id=id)
-    return render(request, 'pages/details.html', {"details": details})
+    tasks = Task.objects.all()
+    context = {
+        "details": details,
+        "tasks": tasks
+    }
+    return render(request, 'pages/details.html', context)
+
+# filter by proposal and pass as a context
+#get the task, then the proposal associated with the task
