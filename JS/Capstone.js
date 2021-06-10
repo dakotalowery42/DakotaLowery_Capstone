@@ -1,103 +1,80 @@
-// Display Leaflet Map
-var mymap = L.map("Map").setView([30.332, -81.655], 13);
+anychart.onDocumentReady(function () {
+	// create data
+	var data = [{
+		id: "1",
+		name: "Development Life Cycle",
+		actualStart: Date.UTC(2018, 01, 02),
+		actualEnd: Date.UTC(2018, 06, 15),
+		children: [{
+				id: "1_1",
+				name: "Obtain GIS Data",
+				actualStart: Date.UTC(2018, 01, 02),
+				actualEnd: Date.UTC(2018, 01, 22),
+				connectTo: "1_2",
+				connectorType: "finish-start",
+				progressValue: "75%"
+			},
+			{
+				id: "1_2",
+				name: "Design and Compile Data within ArcGIS Pro",
+				actualStart: Date.UTC(2018, 01, 23),
+				actualEnd: Date.UTC(2018, 02, 20),
+				connectTo: "1_3",
+				connectorType: "start-start",
+				progressValue: "60%"
+			},
+			{
+				id: "1_3",
+				name: "Create ArcGIS Online Web Mapping Application",
+				actualStart: Date.UTC(2018, 02, 23),
+				actualEnd: Date.UTC(2018, 02, 23),
+				connectTo: "1_4",
+				connectorType: "start-start",
+				progressValue: "80%"
+			},
+			{
+				id: "1_4",
+				name: "Test Web Mapping Application Functionality",
+				actualStart: Date.UTC(2018, 02, 26),
+				actualEnd: Date.UTC(2018, 04, 26),
+				connectTo: "1_5",
+				connectorType: "finish-finish",
+				progressValue: "90%"
+			},
+			{
+				id: "1_5",
+				name: "QC Web Mapping Application Functionality",
+				actualStart: Date.UTC(2018, 04, 29),
+				actualEnd: Date.UTC(2018, 05, 15),
+				connectTo: "1_6",
+				connectorType: "start-finish",
+				progressValue: "60%"
+			},
+			{
+				id: "1_6",
+				name: "Submit Web App to Client",
+				actualStart: Date.UTC(2018, 05, 20),
+				actualEnd: Date.UTC(2018, 05, 27),
+				connectTo: "1_7",
+				connectorType: "start-finish",
+				progressValue: "100%"
+			},
+		]
+	}];
+	// create a data tree
+	var treeData = anychart.data.tree(data, "as-tree");
 
-L.tileLayer(
-  "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw",
-  {
-    maxZoom: 18,
-    attribution:
-      'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    id: "mapbox/streets-v11",
-    tileSize: 512,
-    zoomOffset: -1,
-  }
-).addTo(mymap);
+	// create a chart
+	var chart = anychart.ganttProject();
 
-// Display Gantt Chart
-google.charts.load("current", {
-  packages: ["gantt"],
+	// set the data
+	chart.data(treeData);
+	// configure the scale
+	chart.getTimeline().scale().maximum(Date.UTC(2018, 06, 30));
+	// set the container id
+	chart.container("container");
+	// initiate drawing the chart
+	chart.draw();
+	// fit elements to the width of the timeline
+	chart.fitAll();
 });
-google.charts.setOnLoadCallback(drawChart);
-
-function daysToMilliseconds(days) {
-  return days * 24 * 60 * 60 * 1000;
-}
-
-function drawChart() {
-  var data = new google.visualization.DataTable();
-  data.addColumn("string", "Task ID");
-  data.addColumn("string", "Task Name");
-  data.addColumn("date", "Start Date");
-  data.addColumn("date", "End Date");
-  data.addColumn("number", "Duration");
-  data.addColumn("number", "Percent Complete");
-  data.addColumn("string", "Dependencies");
-
-  data.addRows([
-    [
-      "GISData",
-      "Find Available GIS Data",
-      new Date(2021, 5, 1),
-      new Date(2021, 5, 4),
-      null,
-      100,
-      null,
-    ],
-    [
-      "ArcGISPro",
-      "Compile Data within ArcGIS pro",
-      null,
-      new Date(2021, 5, 7),
-      daysToMilliseconds(3),
-      25,
-      "GISData",
-    ],
-    [
-      "ArcGISOnline",
-      "Create ArcGIS Online Web Mapping Application",
-      null,
-      new Date(2021, 5, 8),
-      daysToMilliseconds(1),
-      20,
-      "GISData,ArcGISPro",
-    ],
-    [
-      "Test",
-      "Test Web Mapping Application Funtionality",
-      null,
-      new Date(2021, 5, 10),
-      daysToMilliseconds(1),
-      0,
-      "GISData,ArcGISOnline",
-    ],
-    [
-      "QC",
-      "QC Web Mapping Application Funtionality",
-      null,
-      new Date(2021, 5, 11),
-      daysToMilliseconds(1),
-      25,
-      "GISData,Test",
-    ],
-    [
-      "Complete",
-      "Submit App to Client",
-      null,
-      new Date(2021, 5, 12),
-      daysToMilliseconds(1),
-      100,
-      "GISData,QC",
-    ],
-  ]);
-
-  var options = {
-    height: 275,
-  };
-
-  var chart = new google.visualization.Gantt(
-    document.getElementById("chart_div")
-  );
-
-  chart.draw(data, options);
-}

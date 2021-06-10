@@ -7,30 +7,31 @@ body {
   align-items: center;
 }
 
-body:before, body:after {
-    content: "";
-    position: fixed;
-    background: rgb(0, 48, 135);
-    left: 0;
-    right: 0;
-    height: 10px;
+body:before,
+body:after {
+  content: "";
+  position: fixed;
+  background: rgb(0, 48, 135);
+  left: 0;
+  right: 0;
+  height: 10px;
 }
 body:before {
-    top: 0;
+  top: 0;
 }
 body:after {
-    bottom: 0;
+  bottom: 0;
 }
 body {
-    border-left: 10px solid rgb(0, 48, 135);
-    border-right: 10px solid rgb(0, 48, 135);  
+  border-left: 10px solid rgb(0, 48, 135);
+  border-right: 10px solid rgb(0, 48, 135);
 }
 
 .img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
 }
 
 h1 {
@@ -73,18 +74,11 @@ h2 span {
   font-size: medium;
 }
 
-#Map {
-  height: 400px;
-  width: 600px;
+#container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.Map {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 800;
+  height: 700;
 }

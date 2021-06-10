@@ -4,21 +4,16 @@
       rel="stylesheet"
       href="/Users/dakotalowery/Desktop/PDX_Code_Guild/pdx_code/class_Binary_Beasts/Students/Dakota/Capstone/CSS/Capstone.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    />
-    <script
-      type="text/javascript"
-      src="https://www.gstatic.com/charts/loader.js"
-    ></script>
+    <script src="https://cdn.anychart.com/releases/8.6.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.6.0/js/anychart-gantt.min.js"></script>
   </head>
   <body>
-    <img
-      class="img"
-      src="/Users/dakotalowery/Desktop/PDX_Code_Guild/pdx_code/class_Binary_Beasts/Students/Dakota/Capstone/Logos/CDMlogo.png"
-      alt=""
-    />
+    <a href="https://cdmsmith.com/en/" target="_blank"
+      ><img
+        class="img"
+        src="/Users/dakotalowery/Desktop/PDX_Code_Guild/pdx_code/class_Binary_Beasts/Students/Dakota/Capstone/Logos/CDMlogo.png"
+        alt=""
+    /></a>
     <h1><span>Capstone Proposal Template</span></h1>
     <div class="Project">
       <p>
@@ -30,18 +25,25 @@
       </p>
     </div>
     <p>Previously Created Web Mapping Application</p>
-    <div id="Map" class="Map"></div>
+    <div id="JAX" class="JAX">
+      <iframe
+        width="800"
+        height="700"
+        frameborder="1"
+        scrolling="yes"
+        marginheight="1"
+        marginwidth="1"
+        src="https://cdmsmith.maps.arcgis.com/apps/webappviewer/index.html?id=3a4019eed3bd410887106bb9bd9d1db4"
+      ></iframe>
+    </div>
     <p>Previous Project Gantt Chart</p>
-    <div id="chart_div"></div>
+    <div>
+      <div id="container"></div>
+    </div>
     <script
       src="/Users/dakotalowery/Desktop/PDX_Code_Guild/pdx_code/class_Binary_Beasts/Students/Dakota/Capstone/JS/Capstone.js"
       async
       defer
-    ></script>
-    <script
-      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-      crossorigin=""
     ></script>
   </body>
 </html>
