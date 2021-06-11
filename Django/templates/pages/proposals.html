@@ -12,7 +12,7 @@
   <p>Web Mapping Application URL:</p>
   <b>{{proposal.map_id}}</b>
   <p>Tasks: {% for t in proposal.task_set.all %}
-    <ul>{{t.taskItem}}, {{t.gantt_date_start}}</ul>
+    <ul>{{t.taskItem}}. Start Date: <b>{{t.gantt_date_start}}</b>, End Date: <b>{{t.gantt_date_end}}</b></ul>
   {% endfor %}</p>
   <b
     ><p>

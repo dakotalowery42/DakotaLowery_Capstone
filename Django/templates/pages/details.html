@@ -25,25 +25,11 @@
     placeholder="Please Enter a Task for your Gantt Chart"
   />
   <br />
-<ul>
-  {% for t in details.task_set.all %}
-  <li>
-    {{t.taskItem}}
-    <a name="delete_task" href="{% url 'delete_task' t.id %}">Remove Task</a>
-  </li>
-  {% endfor %}
-</ul>
-<a><button type="submit">Add Task</button></a>
-<br /><br />
-{% for t in details.task_set.all %}
-<p>{{t.taskItem}}</p>
-{% endfor %}
-<br /><br />
 <input
   type="date"
   id="start"
   name="gantt_date_start"
-  value="2021-06-03"
+  value="2021-06-11"
   min="2021-01-01"
   max="2030-12-31"
 />
@@ -52,15 +38,19 @@
   type="date"
   id="end"
   name="gantt_date_end"
-  value="2021-06-03"
+  value="2021-07-16"
   min="2021-01-01"
   max="2030-12-31"
 />
-<a><button type="submit">Add Dates</button></a>
-{% for t in details.task_set.all %}
-<p>{{t.gantt_date_start}}</p>
-<p>{{t.gantt_date_end}}</p>
-{% endfor %}
+<a><button type="submit">Add Task</button></a>
+<ul>
+  {% for t in details.task_set.all %}
+  <ul>
+    {{t.taskItem}}. Start Date: <b>{{t.gantt_date_start}}</b>, End Date: <b>{{t.gantt_date_end}}</b>
+    <a name="delete_task" href="{% url 'delete_task' t.id %}">Remove Task</a>
+  </ul>  
+  {% endfor %}
+</ul>
 <br /><br />
 </ul>
 </form>
