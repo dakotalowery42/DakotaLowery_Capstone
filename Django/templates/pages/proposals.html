@@ -11,6 +11,9 @@
   <p>Project Description: {{proposal.project_description}}</p>
   <p>Web Mapping Application URL:</p>
   <b>{{proposal.map_id}}</b>
+  <p>Tasks: {% for t in proposal.task_set.all %}
+    <ul>{{t.taskItem}}, {{t.gantt_date_start}}</ul>
+  {% endfor %}</p>
   <b
     ><p>
       <a href="{% url 'proposal_view' proposal.id%}"

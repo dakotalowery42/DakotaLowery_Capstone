@@ -21,3 +21,11 @@ class Proposal(models.Model):
 class Task(models.Model):
     taskItem = models.TextField()
     task_id = models.ForeignKey(Proposal, on_delete=models.CASCADE)
+    gantt_date_start = models.DateField(default=datetime.datetime.now)
+    gantt_date_end = models.DateField(default=datetime.datetime.now)
+
+# class Date(models.Model):
+#     gantt_date_start = models.DateField(default=datetime.datetime.now)
+#     gantt_date_start_id = models.ForeignKey(Task, on_delete=models.CASCADE)
+#     gantt_date_end = models.DateField(default=datetime.datetime.now)
+#     gantt_date_end_id = models.ForeignKey(Task, on_delete=models.CASCADE)

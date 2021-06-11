@@ -37,7 +37,6 @@ def add_task(request, id):
 def delete_task(request, id):
     task = Task.objects.get(id=id)
     details = Proposal.objects.get(id=task.task_id.id)
-    print(task.task_id)
     task.delete()
     tasks = Task.objects.all()
     context = {
@@ -45,7 +44,32 @@ def delete_task(request, id):
         "tasks": tasks
     }
     return render(request, 'pages/details.html', context)
-    # return redirect('home')
+
+
+def start_date(request, id):
+    task = Task.objects.get(id=id)
+    details = Proposal.objects.get(id=task.task_id.id)
+    gantt_date_start = request.POST['gantt_date_start']
+    tasks = Task.objects.all()
+    context = {
+        "details": details,
+        "tasks": tasks
+    }
+    Task.objects.create(gantt_date_start=gantt_date_start)
+    return render(request, 'pages/details.html', context)
+
+
+def end_date(request, id):
+    task = Task.objects.get(id=id)
+    details = Proposal.objects.get(id=task.task_id.id)
+    gantt_date_end = request.POST['gantt_date_end']
+    tasks = Task.objects.all()
+    context = {
+        "details": details,
+        "tasks": tasks
+    }
+    Task.objects.create(gantt_date_end=gantt_date_end)
+    return render(request, 'pages/details.html', context)
 
 
 def proposals(request):
@@ -71,12 +95,9 @@ def proposal_view(request, id):
 
 def see_details(request, id):
     details = Proposal.objects.get(id=id)
-    tasks = Task.objects.all()
+    # tasks = Task.objects.filter(taskid.id=id)
     context = {
         "details": details,
         "tasks": tasks
     }
     return render(request, 'pages/details.html', context)
-
-# filter by proposal and pass as a context
-#get the task, then the proposal associated with the task
