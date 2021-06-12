@@ -5,24 +5,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-body:before,
-body:after {
-  content: "";
-  position: fixed;
-  background: rgb(0, 48, 135);
-  left: 0;
-  right: 0;
-  height: 10px;
-}
-body:before {
-  top: 0;
-}
-body:after {
-  bottom: 0;
-}
-body {
   border-left: 10px solid rgb(0, 48, 135);
   border-right: 10px solid rgb(0, 48, 135);
   border-bottom: 10px solid rgb(0, 48, 135);
@@ -30,6 +12,14 @@ body {
 }
 
 .img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  font-family: "Myriad Pro";
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -68,7 +58,7 @@ h2 span {
   display: inline-block;
 }
 
-#Project {
+.Project {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -76,11 +66,80 @@ h2 span {
   font-size: medium;
 }
 
-#container {
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 800;
   height: 700;
+}
+
+nav {
+  background-color: rgb(0, 48, 135);
+  font-family: "Myriad Pro"
+}
+
+.sidebar {
+  font-family: "Myriad Pro";
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 48, 135);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar h3 {
+  font-family: "Myriad Pro";
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #f1f1f1;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a {
+  font-family: "Myriad Pro";
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #f1f1f1;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #7ac143;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  font-size: 15px;
+  margin-left: 25px;
+}
+
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

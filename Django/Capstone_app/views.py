@@ -26,11 +26,14 @@ def add_task(request, id):
     details = Proposal.objects.get(id=id)
     gantt_title = request.POST['gantt_title']
     tasks = Task.objects.all()
+    gantt_date_start = request.POST['gantt_date_start']
+    gantt_date_end = request.POST['gantt_date_end']
     context = {
         "details": details,
         "tasks": tasks
     }
-    Task.objects.create(taskItem=gantt_title, task_id=details)
+    Task.objects.create(taskItem=gantt_title, task_id=details,
+                        gantt_date_start=gantt_date_start, gantt_date_end=gantt_date_end)
     return render(request, 'pages/details.html', context)
 
 
@@ -43,32 +46,6 @@ def delete_task(request, id):
         "details": details,
         "tasks": tasks
     }
-    return render(request, 'pages/details.html', context)
-
-
-def start_date(request, id):
-    task = Task.objects.get(id=id)
-    details = Proposal.objects.get(id=task.task_id.id)
-    gantt_date_start = request.POST['gantt_date_start']
-    tasks = Task.objects.all()
-    context = {
-        "details": details,
-        "tasks": tasks
-    }
-    Task.objects.create(gantt_date_start=gantt_date_start)
-    return render(request, 'pages/details.html', context)
-
-
-def end_date(request, id):
-    task = Task.objects.get(id=id)
-    details = Proposal.objects.get(id=task.task_id.id)
-    gantt_date_end = request.POST['gantt_date_end']
-    tasks = Task.objects.all()
-    context = {
-        "details": details,
-        "tasks": tasks
-    }
-    Task.objects.create(gantt_date_end=gantt_date_end)
     return render(request, 'pages/details.html', context)
 
 

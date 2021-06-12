@@ -1,25 +1,15 @@
 {% extends 'base.html' %} {% block content %}
 {% csrf_token %}
 
-<!-- Sidebar -->
-<!-- <div class="w3-sidebar w3-bar-block w3-card w3-rgb(0, 48, 135)" style="width:25%;right:0;">
-    <h3 class="w3-bar-item">Common GIS Tasks</h3>
-    <a class="w3-bar-item w3-button w3-card w3-hover-rgb(0, 48, 135)">Obtain GIS Data</a>
-    <a class="w3-bar-item w3-button w3-card w3-hover-rgb(0, 48, 135)">Design and Compile Data within ArcGIS Pro</a>
-    <a class="w3-bar-item w3-button w3-card w3-hover-rgb(0, 48, 135)">Create ArcGIS Online Web Mapping Application</a>
-    <a class="w3-bar-item w3-button w3-card w3-hover-rgb(0, 48, 135)">Test Web Mapping Application Functionality</a>
-    <a class="w3-bar-item w3-button w3-card w3-hover-rgb(0, 48, 135)">QC Web Mapping Application Functionality</a>
-    <a class="w3-bar-item w3-button w3-card w3-hover-rgb(0, 48, 135)">Submit Web App to Client</a>
-  </div> -->
-
-
-<p>Title: {{details.title}}</p>
+<h1>Title: {{details.title}}</h1>
 <p>Project Description: {{details.project_description}}</p>
 <p>Web Mapping Application URL: </p>
 <b>{{details.map_id}}</b>
 <form action="{% url 'add_task' details.id %}" method="POST">
 {% csrf_token %}
 <input
+    class="openbtn" onclick="openNav()"
+    id="myBtn"
     type="text"
     name="gantt_title"
     placeholder="Please Enter a Task for your Gantt Chart"
