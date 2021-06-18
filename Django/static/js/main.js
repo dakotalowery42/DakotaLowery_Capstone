@@ -11,4 +11,3 @@ function closeNav() {
 }
 
 myBtn = document.getElementById("myBtn")
-

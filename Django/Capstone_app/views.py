@@ -2,6 +2,24 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Proposal, Task
 
+from rest_framework.decorators import api_view
+from rest_framework import status
+from .serializers import TaskSerializer
+from rest_framework.response import Response
+
+@api_view(['GET'])
+def proposal_detail(request, pk, format=None):
+    """
+    Retrieve a task by id.
+    """
+    try:
+        task = Task.objects.get(pk=pk)
+    except Task.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        serializer = TaskSerializer(task)
+        return Response(serializer.data)
+
 
 def home(request):
     return render(request, 'pages/home.html')
@@ -67,14 +85,19 @@ def tasks(request):
 
 def proposal_view(request, id):
     post = Proposal.objects.get(id=id)
-    return render(request, 'pages/proposal_view.html', {"post": post})
+    context = {
+        "post": post,
+    }
+    return render(request, 'pages/proposal_view.html', context)
 
 
 def see_details(request, id):
     details = Proposal.objects.get(id=id)
-    # tasks = Task.objects.filter(taskid.id=id)
     context = {
         "details": details,
         "tasks": tasks
     }
     return render(request, 'pages/details.html', context)
+
+def serialized(request):
+    return render(request, 'pages/serialized.html')
