@@ -18,48 +18,17 @@
 <p>Project Description: {{proposal.project_description}}</p>
 <p>Tasks: {% for t in proposal.task_set.all %}
   <ul>{{t.taskItem}}. Start Date: <b>{{t.gantt_date_start}}</b>, End Date: <b>{{t.gantt_date_end}}</b></ul>
+  <br>
 {% endfor %}</p>
-<a href="{% url 'see_details' proposal.id%}"
->Add Task and Dates: {{ proposal.title }}</a
->
+<a href="{% url 'see_details' proposal.id%}">Add Task and Dates: {{ proposal.title }}</a>
 <b>
-  <p>
-    <a href="{% url 'proposal_view' proposal.id%}"
-      >View Final Proposal: {{ proposal.title }}</a
-    >
-  </p></b>
-    </div>
+<p>
+  <a href="{% url 'proposal_view' proposal.id%}">View Final Proposal: {{ proposal.title }}</a>
+</p>
+</b>
+  </div>
   {% endfor %}
 </ul>
 {% endblock %}
 
 
-<!-- <div class="row row-cols-1 row-cols-md-2 g-4">
-  <div class="col">
-    <div class="card">
-      <iframe
-    width="400"
-    height="300"
-    frameborder="1"
-    scrolling="yes"
-    marginheight="1"
-    marginwidth="1"
-    src="{{proposal.map_id}}"
-  ></iframe>
-      <div class="card-body">
-        <h5 class="card-title">Title: {{proposal.title}}</h5>
-        <p class="card-text">{{proposal.project_description}}</p>
-        <p class="card-text">Tasks: {% for t in proposal.task_set.all %}
-          <ul>{{t.taskItem}}. Start Date: <b>{{t.gantt_date_start}}</b>, End Date: <b>{{t.gantt_date_end}}</b></ul>
-        {% endfor %}</p></p>
-        <a href="{% url 'see_details' proposal.id%}"
->Add Task and Dates: {{ proposal.title }}</a
-><b>
-  <p>
-    <a href="{% url 'proposal_view' proposal.id%}"
-      >View Final Proposal: {{ proposal.title }}</a
-    >
-  </p></b>
-      </div>
-    </div>
-  </div> -->

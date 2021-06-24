@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Capstone_app',
     'rest_framework',
+    'jquery',
 ]
 
 MIDDLEWARE = [

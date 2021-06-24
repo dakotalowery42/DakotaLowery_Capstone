@@ -18,119 +18,74 @@
     src="{{post.map_id}}"
   ></iframe>
 </div>
-<!-- <p>Projects Timeline</p> -->
-<!-- <script
-  type="text/javascript"
-  src="https://www.gstatic.com/charts/loader.js"
-></script>
-<div id="timeline"></div>
-<script>
-  google.charts.load("current", { packages: ["timeline"] });
-  google.charts.setOnLoadCallback(drawChart);
-  function drawChart() {
-    var container = document.getElementById("timeline");
-    var chart = new google.visualization.Timeline(container);
-    var dataTable = new google.visualization.DataTable();
-
-    dataTable.addColumn({ type: "string", id: "Task" });
-    dataTable.addColumn({ type: "date", id: "Start" });
-    dataTable.addColumn({ type: "date", id: "End" });
-    dataTable.addRows([
-      [
-        "{{post.taskItem}}",
-        new Date("{{post.gantt_date_start}}"),
-        new Date("{{post.gantt_date_end}}"),
-      ],
-      [
-        "Design and Compile Data within ArcGIS Pro",
-        new Date(2021, 6, 10),
-        new Date(2021, 6, 11),
-      ],
-      [
-        "Test Web Mapping Application Functionality",
-        new Date(2021, 7, 15),
-        new Date(2021, 7, 16),
-      ],
-    ]);
-
-    chart.draw(dataTable);
-  }
-</script> -->
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/timeline.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <figure class="highcharts-figure">
-    <div id="container"></div>
-    <h5 class="highcharts-description">
-        Timeline charts are used to place tasks on a time axis,
-        such as this example showing the major tasks in {{post.title}}.
-    </h5>
+  <div id="container"></div>
+
+  <h5 class="highcharts-description">
+    Timeline charts are used to place tasks on a time axis, such as this example
+    showing the major tasks in {{post.title}}.
+  </h5>
 </figure>
 <script>
-  Highcharts.chart('container', {
-    chart: {
-        type: 'timeline'
-    },
-    accessibility: {
-        screenReaderSection: {
-            beforeChartFormat: '<h5>{chartTitle}</h5>' +
-                '<div>{typeDescription}</div>' +
-                '<div>{chartSubtitle}</div>' +
-                '<div>{chartLongdesc}</div>' +
-                '<div>{viewTableButton}</div>'
-        },
-        point: {
-            valueDescriptionFormat: '{index}. {point.label}. {point.description}.'
-        }
-    },
-    xAxis: {
-        visible: false
-    },
-    yAxis: {
-        visible: false
-    },
-    title: {
-        text: '{{post.title}} Project Timeline'
-    },
-    colors: [
-        '#7ac143',
-    ],
-    series: [{
-        data: [{
-            name: '{{post.taskItem}}',
-            label: '{{post.gantt_date_start}} - {{post.gantt_date_end}}',
-            description: '{{post.gantt_date_end}}'
-        }, {
-            name: 'Sputnik 1',
-            label: '1957: First artificial satellite',
-            description: '4 October 1957 First artificial satellite. First signals from space.'
-        }, {
-            name: 'First human spaceflight',
-            label: '1961: First human spaceflight (Yuri Gagarin)',
-            description: 'First human spaceflight (Yuri Gagarin), and the first human-crewed orbital flight'
-        }, {
-            name: 'First human on the Moon',
-            label: '1969: First human on the Moon',
-            description: 'First human on the Moon, and first space launch from a celestial body other than the Earth. First sample return from the Moon'
-        }, {
-            name: 'First space station',
-            label: '1971: First space station',
-            description: 'Salyut 1 was the first space station of any kind, launched into low Earth orbit by the Soviet Union on April 19, 1971.'
-        }, {
-            name: 'Apollo–Soyuz Test Project',
-            label: '1975: First multinational manned mission',
-            description: 'The mission included both joint and separate scientific experiments, and provided useful engineering experience for future joint US–Russian space flights, such as the Shuttle–Mir Program and the International Space Station.'
-        }
-      ]
-    }]
-});
+  fetch(`http://127.0.0.1:8000/proposal_detail/{{post.id}}`)
+    .then((response) => response.json())
+    .then((data) => {
+      var chart_data = []
+      data.forEach((i)=>
+      chart_data.push({name: i.taskItem, label: `${i.gantt_date_start} - ${i.gantt_date_end}`}));
+        const chart = new Highcharts.chart("container", {
+          chart: {
+            borderColor: "#003087",
+            borderWidth: 2,
+            backgroundColor: {
+              linearGradient: [0, 0, 500, 500],
+              stops: [
+                [0, "rgb(255, 255, 255)"],
+                [1, "rgb(0, 48, 135)"],
+              ],
+            },
+            type: "timeline",
+          },
+          accessibility: {
+            screenReaderSection: {
+              beforeChartFormat:
+                "<h5>{chartTitle}</h5>" +
+                "<div>{typeDescription}</div>" +
+                "<div>{chartSubtitle}</div>" +
+                "<div>{chartLongdesc}</div>" +
+                "<div>{viewTableButton}</div>",
+            },
+            point: {
+              valueDescriptionFormat:
+                "{index}. {point.label}. {point.description}.",
+            },
+          },
+          xAxis: {
+            visible: false,
+          },
+          yAxis: {
+            visible: false,
+          },
+          title: {
+            text: "{{post.title}} Project Timeline",
+          },
+          credits: {
+            enabled: false,
+          },
+          colors: ["#7ac143"],
+          series: [
+            {
+              data:
+                chart_data
+              ,
+            },
+          ],
+        });
+    });
 </script>
 {% endblock %}
 
-<!-- make loop into JavaScript Variable
-Create element on page and then getElement by ID
-Then I would have JavaScript Variable -->
-
-<!-- {% for t in details.task_set.all %} -->
-<!-- {% endfor %} -->

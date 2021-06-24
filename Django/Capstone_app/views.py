@@ -7,17 +7,22 @@ from rest_framework import status
 from .serializers import TaskSerializer
 from rest_framework.response import Response
 
+
 @api_view(['GET'])
 def proposal_detail(request, pk, format=None):
     """
     Retrieve a task by id.
     """
     try:
-        task = Task.objects.get(pk=pk)
+        # gets the name of the current Proposal by its ID
+        post = Proposal.objects.get(pk=pk)
+        # Finds all tasks that are linked to that proposal
+        tasks = Task.objects.all().filter(task_id=post)
     except Task.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
-        serializer = TaskSerializer(task)
+        # Returns many results, because it's a queryset
+        serializer = TaskSerializer(tasks, many=True)
         return Response(serializer.data)
 
 
@@ -85,6 +90,7 @@ def tasks(request):
 
 def proposal_view(request, id):
     post = Proposal.objects.get(id=id)
+    print(post)
     context = {
         "post": post,
     }
@@ -98,6 +104,7 @@ def see_details(request, id):
         "tasks": tasks
     }
     return render(request, 'pages/details.html', context)
+
 
 def serialized(request):
     return render(request, 'pages/serialized.html')
