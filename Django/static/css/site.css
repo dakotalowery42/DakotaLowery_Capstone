@@ -1,3 +1,7 @@
+html {
+  border: 10px solid rgb(0, 48, 135);
+}
+
 body {
   background-color: white;
   font-family: "Myriad Pro";
@@ -5,17 +9,54 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-left: 10px solid rgb(0, 48, 135);
-  border-right: 10px solid rgb(0, 48, 135);
-  border-bottom: 10px solid rgb(0, 48, 135);
-  border-top: 10px solid rgb(0, 48, 135);
+  background: rgba(237, 237, 237, 1);
+  background: -moz-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    left bottom,
+    color-stop(0%, rgba(237, 237, 237, 1)),
+    color-stop(53%, rgba(246, 246, 246, 1)),
+    color-stop(100%, rgba(255, 255, 255, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff', GradientType=0 );
 }
 
-.img {
+img {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
 
 p {
@@ -58,7 +99,384 @@ h2 span {
   display: inline-block;
 }
 
-.Project {
+.cdm-smith-button {
+  color: #ffffff;
+  background-color: #003087;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 342px;
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border: 2px solid #7ac143;
+}
+
+h5 {
+  font-family: "Myriad Pro";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  font-family: "Myriad Pro";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  color: rgb(0, 48, 135);
+  font-family: "Myriad Pro";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*CSS Tags for add_proposal */
+
+.title {
+  font-family: "Myriad Pro";
+  width: 342px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(237, 237, 237, 1);
+  background: -moz-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    left bottom,
+    color-stop(0%, rgba(237, 237, 237, 1)),
+    color-stop(53%, rgba(246, 246, 246, 1)),
+    color-stop(100%, rgba(255, 255, 255, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff', GradientType=0 );
+}
+
+.project_description {
+  font-family: "Myriad Pro";
+  width: 342px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(237, 237, 237, 1);
+  background: -moz-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    left bottom,
+    color-stop(0%, rgba(237, 237, 237, 1)),
+    color-stop(53%, rgba(246, 246, 246, 1)),
+    color-stop(100%, rgba(255, 255, 255, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff', GradientType=0 );
+}
+
+.url {
+  font-family: "Myriad Pro";
+  width: 342px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(237, 237, 237, 1);
+  background: -moz-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    left bottom,
+    color-stop(0%, rgba(237, 237, 237, 1)),
+    color-stop(53%, rgba(246, 246, 246, 1)),
+    color-stop(100%, rgba(255, 255, 255, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff', GradientType=0 );
+}
+
+.project_date_start {
+  font-family: "Myriad Pro";
+  width: 342px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(237, 237, 237, 1);
+  background: -moz-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    left bottom,
+    color-stop(0%, rgba(237, 237, 237, 1)),
+    color-stop(53%, rgba(246, 246, 246, 1)),
+    color-stop(100%, rgba(255, 255, 255, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff', GradientType=0 );
+}
+
+.project_date_end {
+  font-family: "Myriad Pro";
+  width: 342px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(237, 237, 237, 1);
+  background: -moz-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    left bottom,
+    color-stop(0%, rgba(237, 237, 237, 1)),
+    color-stop(53%, rgba(246, 246, 246, 1)),
+    color-stop(100%, rgba(255, 255, 255, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff', GradientType=0 );
+}
+
+.submit-button {
+  font-family: "Myriad Pro";
+  color: #ffffff;
+  background-color: #003087;
+  width: 342px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border: 2px solid #7ac143;
+}
+
+/*CSS Tags for add_proposal END*/
+
+/*CSS for proposals Starts*/
+
+.card {
+  font-family: "Myriad Pro";
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: rgba(237, 237, 237, 1);
+  background: -moz-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    left bottom,
+    color-stop(0%, rgba(237, 237, 237, 1)),
+    color-stop(53%, rgba(246, 246, 246, 1)),
+    color-stop(100%, rgba(255, 255, 255, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(246, 246, 246, 1) 53%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff', GradientType=0 );
+}
+
+.h100 {
+  height: 400px;
+  width: 300px;
+}
+
+.proposal-button {
+  color: #ffffff;
+  background-color: #003087;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  width: 200px;
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border: 2px solid #7ac143;
+}
+
+.link {
+  color: #ffffff;
+}
+
+.link:hover {
+  color: #7ac143;
+}
+
+/* CSS for Proposals Ends */
+
+p.Project {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,7 +496,8 @@ h2 span {
 
 nav {
   background-color: rgb(0, 48, 135);
-  font-family: "Myriad Pro"
+  font-family: "Myriad Pro";
+  width: 100%;
 }
 
 .sidebar {
@@ -127,38 +546,21 @@ nav {
   margin-left: 25px;
 }
 
-
 #main {
-  transition: margin-left .5s;
+  transition: margin-left 0.5s;
   padding: 16px;
 }
 
 @media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
+  .sidebar {
+    padding-top: 15px;
+  }
+  .sidebar a {
+    font-size: 18px;
+  }
 }
 
 input {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* .card {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 60%;
-} */
-
-#card-mb-3{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#card-body{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -169,20 +571,21 @@ input {
   font-weight: bold;
 }
 
-.highcharts-figure, .highcharts-data-table table {
-  min-width: 320px; 
+.highcharts-figure,
+.highcharts-data-table table {
+  min-width: 320px;
   max-width: 600px;
   margin: 1em auto;
 }
 
 .highcharts-data-table table {
-font-family: Verdana, sans-serif;
-border-collapse: collapse;
-border: 1px solid #EBEBEB;
-margin: 10px auto;
-text-align: center;
-width: 100%;
-max-width: 500px;
+  font-family: Verdana, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #ebebeb;
+  margin: 10px auto;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
 }
 .highcharts-data-table caption {
   padding: 1em 0;
@@ -190,13 +593,16 @@ max-width: 500px;
   color: #555;
 }
 .highcharts-data-table th {
-font-weight: 600;
+  font-weight: 600;
   padding: 0.5em;
 }
-.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
   padding: 0.5em;
 }
-.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
   background: #f8f8f8;
 }
 .highcharts-data-table tr:hover {

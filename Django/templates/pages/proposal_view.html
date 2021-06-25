@@ -4,7 +4,7 @@
 /></a>
 <h1><span>{{post.title}}</span></h1>
 <div id="Project" class="Project">
-  <p>Project Description: {{post.project_description}}</p>
+  <p class="Project">Project Description: {{post.project_description}}</p>
 </div>
 <p>Previously Created Web Mapping Application</p>
 <div id="JAX" class="JAX">
@@ -36,7 +36,7 @@
     .then((data) => {
       var chart_data = []
       data.forEach((i)=>
-      chart_data.push({name: i.taskItem, label: `${i.gantt_date_start} - ${i.gantt_date_end}`}));
+      chart_data.push({name: i.taskItem, label: `Start: ${i.gantt_date_start}<br>End: ${i.gantt_date_end}`}));
         const chart = new Highcharts.chart("container", {
           chart: {
             borderColor: "#003087",

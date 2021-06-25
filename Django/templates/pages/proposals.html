@@ -1,31 +1,38 @@
 {% extends 'base.html' %} {% block content %} {% csrf_token %}
-<a href="{% url 'add_proposal'%}">Add another Proposal</a>
+<h5><button class="proposal-button"><a class="link" href="{% url 'add_proposal'%}">Add another Proposal</a></button></h5>
 <ul>
-  {% for proposal in proposals%}
-  <p>
-    <div class="card border-dark mb-3" style="width: 42rem;" id="card-mb-3">
-      <iframe
-    width="400"
-    height="300"
-    frameborder="1"
-    scrolling="yes"
-    marginheight="1"
-    marginwidth="1"
-    src="{{proposal.map_id}}"
-  ></iframe>
-</p>
-<h5>Title: {{proposal.title}}</h5>
-<p>Project Description: {{proposal.project_description}}</p>
-<p>Tasks: {% for t in proposal.task_set.all %}
-  <ul>{{t.taskItem}}. Start Date: <b>{{t.gantt_date_start}}</b>, End Date: <b>{{t.gantt_date_end}}</b></ul>
-  <br>
-{% endfor %}</p>
-<a href="{% url 'see_details' proposal.id%}">Add Task and Dates: {{ proposal.title }}</a>
-<b>
-<p>
-  <a href="{% url 'proposal_view' proposal.id%}">View Final Proposal: {{ proposal.title }}</a>
-</p>
-</b>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for proposal in proposals%}
+    <div class="col">
+      <div class="card h-100">
+        <iframe
+        width="400"
+        height="300"
+        frameborder="1"
+        scrolling="yes"
+        marginheight="1"
+        marginwidth="1"
+        src="{{proposal.map_id}}"
+        ></iframe>
+        <div class="card-body">
+          <h5 class="card-title"><b>Title: {{proposal.title}}</b></h5>
+          <p class="card-text">Project Description: {{proposal.project_description}}</p>
+          <p class="card-text"><small><b>Tasks:</b> {% for t in proposal.task_set.all %}
+            <ul><b>{{t.taskItem}}.</b> Start Date: {{t.gantt_date_start}} End Date: {{t.gantt_date_end}}</ul>
+          {% endfor %}</small></p>
+          <p>
+            <button class="proposal-button"><a class="link" href="{% url 'see_details' proposal.id%}">Add Task and Dates: {{ proposal.title }}</a></button>
+          <!-- <a href="{% url 'see_details' proposal.id%}">Add Task and Dates: {{ proposal.title }}</a> -->
+          </p>
+          
+          <b>
+          <p>
+            <button class="proposal-button"><a class="link" href="{% url 'proposal_view' proposal.id%}">View Final Proposal: {{ proposal.title }}</a></button>
+          <!-- <a href="{% url 'proposal_view' proposal.id%}">View Final Proposal: {{ proposal.title }}</a>? -->
+          </p>
+          </b>
+        </div>   
+      </div>
   </div>
   {% endfor %}
 </ul>
