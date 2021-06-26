@@ -1,118 +1,174 @@
-{% extends 'base.html' %} {% block content %}
-{% csrf_token %}
-
-<h1>Title: {{details.title}}</h1>
-<p>Project Description: {{details.project_description}}</p>
-<p>Web Mapping Application URL: </p>
-<b>{{details.map_id}}</b>
+{% extends 'base.html' %} {% block content %} {% csrf_token %}
+<div id="main" class="proposal_info">
+  <h1>Title: {{details.title}}</h1>
+  <p class="project_description_details">
+    Project Description: {{details.project_description}}
+  </p>
+  <p>Web Mapping Application URL:</p>
+  <b>{{details.map_id}}</b>
+</div>
 <form action="{% url 'add_task' details.id %}" method="POST">
-{% csrf_token %}
-<input
-    class="openbtn" onclick="openNav()"
-    id="myBtn"
-    type="text"
-    name="gantt_title"
-    placeholder="Please Enter a Task for your Gantt Chart"
-  />
-  <span id="myBtn_info" style="display: none; color: red"
-  >The Task cannot be blank.
-  </span>
-  <script>
-    const myBtn = document.getElementById("myBtn");
-    const myBtntrigger = document.getElementById("submit");
-    myBtn.addEventListener("input", function () {
-      const myBtnpattern = /^[A-z]{1,}$/;
-      if (!myBtnpattern.test(this.value)) {
-        this.style.outline = "1px solid red";
-        myBtn_info.style.display = "inline";
-      } else {
-        this.style.outline = "1px solid black";
-        myBtn_info.style.display = "none";
+  {% csrf_token %}
+  <div class="task_input">
+    <input
+      class="openbtn"
+      onclick="openNav()"
+      id="myBtn"
+      type="text"
+      name="gantt_title"
+      placeholder="Please Enter a Task for your Gantt Chart"
+    />
+    <script>
+      // set value using id
+      document.getElementById("Obtain GIS Data").value = "Obtain GIS Data";
+      document.getElementById("Design and Compile Data within ArcGIS Pro").value = "Design and Compile Data within ArcGIS Pro";
+      document.getElementById("Test Web Mapping Application Functionality").value = "Test Web Mapping Application Functionality";
+      document.getElementById("QC Web Mapping Application Functionality").value = "QC Web Mapping Application Functionality";
+      document.getElementById("Submit Web App to Client").value = "Submit Web App to Client";
+      
+      function myFunction_ObtainGISData()
+      {
+          var txt1 = document.getElementById("Obtain GIS Data").value;
+          document.getElementById("myBtn").value = txt1;
       }
-    });
-  </script>
+      function myFunction_DesignandCompileDatawithinArcGISPro()
+      {
+          var txt1 = document.getElementById("Design and Compile Data within ArcGIS Pro").value;
+          document.getElementById("myBtn").value = txt1;
+      }
+      function myFunction_TestWebMappingApplicationFunctionality()
+      {
+          var txt1 = document.getElementById("Test Web Mapping Application Functionality").value;
+          document.getElementById("myBtn").value = txt1;
+      }
+      function myFunction_QCWebMappingApplicationFunctionality()
+      {
+          var txt1 = document.getElementById("QC Web Mapping Application Functionality").value;
+          document.getElementById("myBtn").value = txt1;
+      }
+      function myFunction_SubmitWebApptoClient()
+      {
+          var txt1 = document.getElementById("Submit Web App to Client").value;
+          document.getElementById("myBtn").value = txt1;
+      }
+      
+      // get value
+      function getVal()
+      {
+        var txt = document.getElementById("Obtain GIS Data").value;
+        alert(txt);
+      }
+    </script>
+    <span id="myBtn_info" style="display: none; color: red"
+      >The Task cannot be blank.
+    </span>
+    <script>
+      const myBtn = document.getElementById("myBtn");
+      const myBtntrigger = document.getElementById("submit");
+      myBtn.addEventListener("input", function () {
+        const myBtnpattern = /^[a-zA-Z0-9 ]/;
+        if (!myBtnpattern.test(this.value)) {
+          this.style.outline = "1px solid red";
+          myBtn_info.style.display = "inline";
+        } else {
+          this.style.outline = "1px solid black";
+          myBtn_info.style.display = "none";
+        }
+      });
+    </script>
+    <br />
+    <input
+      class="closebtn"
+      onclick="closeNav()"
+      type="date"
+      id="start_date"
+      name="gantt_date_start"
+      value="2021-06-11"
+      min="2021-01-01"
+      max="2030-12-31"
+    />
+    <span id="start_date_info" style="display: none; color: red"
+      >The Start Date must be in YYYY-MM-DD Format.
+    </span>
+    <script>
+      const start_date = document.getElementById("start_date");
+      const start_datetrigger = document.getElementById("submit");
+      start_date.addEventListener("input", function () {
+        const start_datepattern = /(([1][0-2]|[0][0-9])[-.\/]([0-2][0-9]|[3][0-1])[-.\/][1-9]([0-9]{3}))|([1-9]([0-9]{3})[-.\/]([1][0-2]|[0][0-9])[-.\/]([0-2][0-9]))/;
+        if (!start_datepattern.test(this.value)) {
+          this.style.outline = "1px solid red";
+          start_date_info.style.display = "inline";
+        } else {
+          this.style.outline = "1px solid black";
+          start_date_info.style.display = "none";
+        }
+      });
+    </script>
+    <br />
+    <input
+      class="closebtn"
+      onclick="closeNav()"
+      type="date"
+      id="end_date"
+      name="gantt_date_end"
+      value="2021-07-16"
+      min="2021-01-01"
+      max="2030-12-31"
+    />
+    <span id="end_date_info" style="display: none; color: red"
+      >The End Date must be in YYYY-MM-DD Format.
+    </span>
+    <script>
+      const end_date = document.getElementById("end_date");
+      const end_datetrigger = document.getElementById("submit");
+      end_date.addEventListener("input", function () {
+        const end_datepattern = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/gi;
+        if (!end_datepattern.test(this.value)) {
+          this.style.outline = "1px solid red";
+          end_date_info.style.display = "inline";
+        } else {
+          this.style.outline = "1px solid black";
+          end_date_info.style.display = "none";
+        }
+      });
+    </script>
+    <br />
+    <a><button type="submit" class="submit-button_details">Add Task</button></a>
+  </div>
   <br />
-<input
-  class="closebtn" onclick="closeNav()"
-  type="date"
-  id="start_date"
-  name="gantt_date_start"
-  value="2021-06-11"
-  min="2021-01-01"
-  max="2030-12-31"
-/>
-<span id="start_date_info" style="display: none; color: red"
-    >The Start Date must be in YYYY-MM-DD Format.
-  </span>
+  <div id="task_details" class="task_details">
+    <ul>
+      {% for t in details.task_set.all %}
+      <ul>
+        <b>Task: </b
+        >{{t.taskItem}}.<b> Start Date:</b>
+        {{t.gantt_date_start}},
+        <b>End Date:</b
+        >{{t.gantt_date_end}}
+        <a name="delete_task" href="{% url 'delete_task' t.id %}"
+          >Remove Task</a
+        >
+      </ul>
+      {% endfor %}
+    </ul>
+  </div>
   <script>
-    const start_date = document.getElementById("start_date");
-    const start_datetrigger = document.getElementById("submit");
-    start_date.addEventListener("input", function () {
-      const start_datepattern = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/gi;
-      if (!start_datepattern.test(this.value)) {
-        this.style.outline = "1px solid red";
-        start_date_info.style.display = "inline";
-      } else {
-        this.style.outline = "1px solid black";
-        start_date_info.style.display = "none";
-      }
+    const submitTrigger = document.getElementById("submit");
+    submitTrigger.addEventListener("click", function (e) {
+      e.preventDefault();
+      fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+        body: JSON.stringify({
+          myBtn: myBtn.value,
+          start_date: start_date.value,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => console.log(json));
     });
   </script>
-<br />
-<input
-  class="closebtn" onclick="closeNav()"
-  type="date"
-  id="end_date"
-  name="gantt_date_end"
-  value="2021-07-16"
-  min="2021-01-01"
-  max="2030-12-31"
-/>
-<span id="end_date_info" style="display: none; color: red"
-    >The End Date must be in YYYY-MM-DD Format.
-  </span>
-  <script>
-    const end_date = document.getElementById("end_date");
-    const end_datetrigger = document.getElementById("submit");
-    end_date.addEventListener("input", function () {
-      const end_datepattern = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/gi;
-      if (!end_datepattern.test(this.value)) {
-        this.style.outline = "1px solid red";
-        end_date_info.style.display = "inline";
-      } else {
-        this.style.outline = "1px solid black";
-        end_date_info.style.display = "none";
-      }
-    });
-  </script>
-<a><button type="submit">Add Task</button></a>
-<ul>
-  {% for t in details.task_set.all %}
-  <ul>
-    {{t.taskItem}}. Start Date: <b>{{t.gantt_date_start}}</b>, End Date: <b>{{t.gantt_date_end}}</b>
-    <a name="delete_task" href="{% url 'delete_task' t.id %}">Remove Task</a>
-  </ul>  
-  {% endfor %}
-</ul>
-<br /><br />
-</ul>
-<script>
-  const submitTrigger = document.getElementById("submit");
-  submitTrigger.addEventListener("click", function (e) {
-    e.preventDefault();
-    fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "POST",
-      body: JSON.stringify({
-        myBtn: myBtn.value,
-        start_date: start_date.value,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json));
-  });
-</script>
 </form>
 {% endblock %}
