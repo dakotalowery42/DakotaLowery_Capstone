@@ -21,40 +21,47 @@
     <script>
       // set value using id
       document.getElementById("Obtain GIS Data").value = "Obtain GIS Data";
-      document.getElementById("Design and Compile Data within ArcGIS Pro").value = "Design and Compile Data within ArcGIS Pro";
-      document.getElementById("Test Web Mapping Application Functionality").value = "Test Web Mapping Application Functionality";
-      document.getElementById("QC Web Mapping Application Functionality").value = "QC Web Mapping Application Functionality";
-      document.getElementById("Submit Web App to Client").value = "Submit Web App to Client";
-      
-      function myFunction_ObtainGISData()
-      {
-          var txt1 = document.getElementById("Obtain GIS Data").value;
-          document.getElementById("myBtn").value = txt1;
+      document.getElementById(
+        "Design and Compile Data within ArcGIS Pro"
+      ).value = "Design and Compile Data within ArcGIS Pro";
+      document.getElementById(
+        "Test Web Mapping Application Functionality"
+      ).value = "Test Web Mapping Application Functionality";
+      document.getElementById(
+        "QC Web Mapping Application Functionality"
+      ).value = "QC Web Mapping Application Functionality";
+      document.getElementById("Submit Web App to Client").value =
+        "Submit Web App to Client";
+
+      function myFunction_ObtainGISData() {
+        var txt1 = document.getElementById("Obtain GIS Data").value;
+        document.getElementById("myBtn").value = txt1;
       }
-      function myFunction_DesignandCompileDatawithinArcGISPro()
-      {
-          var txt1 = document.getElementById("Design and Compile Data within ArcGIS Pro").value;
-          document.getElementById("myBtn").value = txt1;
+      function myFunction_DesignandCompileDatawithinArcGISPro() {
+        var txt1 = document.getElementById(
+          "Design and Compile Data within ArcGIS Pro"
+        ).value;
+        document.getElementById("myBtn").value = txt1;
       }
-      function myFunction_TestWebMappingApplicationFunctionality()
-      {
-          var txt1 = document.getElementById("Test Web Mapping Application Functionality").value;
-          document.getElementById("myBtn").value = txt1;
+      function myFunction_TestWebMappingApplicationFunctionality() {
+        var txt1 = document.getElementById(
+          "Test Web Mapping Application Functionality"
+        ).value;
+        document.getElementById("myBtn").value = txt1;
       }
-      function myFunction_QCWebMappingApplicationFunctionality()
-      {
-          var txt1 = document.getElementById("QC Web Mapping Application Functionality").value;
-          document.getElementById("myBtn").value = txt1;
+      function myFunction_QCWebMappingApplicationFunctionality() {
+        var txt1 = document.getElementById(
+          "QC Web Mapping Application Functionality"
+        ).value;
+        document.getElementById("myBtn").value = txt1;
       }
-      function myFunction_SubmitWebApptoClient()
-      {
-          var txt1 = document.getElementById("Submit Web App to Client").value;
-          document.getElementById("myBtn").value = txt1;
+      function myFunction_SubmitWebApptoClient() {
+        var txt1 = document.getElementById("Submit Web App to Client").value;
+        document.getElementById("myBtn").value = txt1;
       }
-      
+
       // get value
-      function getVal()
-      {
+      function getVal() {
         var txt = document.getElementById("Obtain GIS Data").value;
         alert(txt);
       }
@@ -140,14 +147,12 @@
     <ul>
       {% for t in details.task_set.all %}
       <ul>
-        <b>Task: </b
-        >{{t.taskItem}}.<b> Start Date:</b>
-        {{t.gantt_date_start}},
-        <b>End Date:</b
-        >{{t.gantt_date_end}}
-        <a name="delete_task" href="{% url 'delete_task' t.id %}"
-          >Remove Task</a
-        >
+        <li class="task">
+          <b>Task: </b>{{t.taskItem}}.<b> Start Date:</b>
+          {{t.gantt_date_start}},
+          <b>End Date:</b>{{t.gantt_date_end}}
+          <a><button type="submit" class="remove-button_details" name="delete_task" href="{% url 'delete_task' t.id %}">Remove Task</button></a
+        </li>
       </ul>
       {% endfor %}
     </ul>

@@ -1,5 +1,7 @@
 {% extends 'base.html' %} {% block content %} {% csrf_token %}
+<br>
 <h5><button class="proposal-button"><a class="link" href="{% url 'add_proposal'%}">Add another Proposal</a></button></h5>
+<br>
 <ul>
   <div class="row row-cols-1 row-cols-md-2 g-4">
     {% for proposal in proposals%}
@@ -20,16 +22,15 @@
           <p class="card-text"><small><b>Tasks:</b> {% for t in proposal.task_set.all %}
             <ul><b>{{t.taskItem}}.</b> Start Date: {{t.gantt_date_start}} End Date: {{t.gantt_date_end}}</ul>
           {% endfor %}</small></p>
-          <p>
-            <button class="proposal-button"><a class="link" href="{% url 'see_details' proposal.id%}">Add Task and Dates: {{ proposal.title }}</a></button>
-          <!-- <a href="{% url 'see_details' proposal.id%}">Add Task and Dates: {{ proposal.title }}</a> -->
-          </p>
-          
-          <b>
-          <p>
-            <button class="proposal-button"><a class="link" href="{% url 'proposal_view' proposal.id%}">View Final Proposal: {{ proposal.title }}</a></button>
-          <!-- <a href="{% url 'proposal_view' proposal.id%}">View Final Proposal: {{ proposal.title }}</a>? -->
-          </p>
+          <div class="card-footer bg-transparent border-light mt-auto">
+            <p>
+              <button class="proposal-button"><a class="link" href="{% url 'see_details' proposal.id%}">Add Task and Dates: {{ proposal.title }}</a></button>
+            </p>
+            <b>
+            <p>
+              <button class="proposal-button"><a class="link" href="{% url 'proposal_view' proposal.id%}">View Final Proposal: {{ proposal.title }}</a></button>
+            </p>
+          </div>
           </b>
         </div>   
       </div>
