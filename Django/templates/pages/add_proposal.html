@@ -3,30 +3,16 @@
   <form action="{% url 'add_proposal' %}" method="POST">
     {% csrf_token %}<br />
     <input
-      id="add_title"
-      class="add_title"
+      id="title"
+      class="title"
       type="text"
-      name="add_title"
+      name="title"
       placeholder="Please Enter a Title for your Proposal"
       required
     />
     <span id="title_info" style="display: none; color: red"
       >The Title cannot be blank.
     </span>
-    <script>
-      const add_title = document.getElementById("add_title");
-      const titletrigger = document.getElementById("submit");
-      add_title.addEventListener("input", function () {
-        const titlepattern = /^[A-z]{1,}$/;
-        if (!titlepattern.test(this.value)) {
-          this.style.outline = "1px solid red";
-          title_info.style.display = "inline";
-        } else {
-          this.style.outline = "1px solid black";
-          title_info.style.display = "none";
-        }
-      });
-    </script>
     <br />
     <textarea
       id="project_description"
@@ -41,20 +27,6 @@
     <span id="project_description_info" style="display: none; color: red"
       >The Project Description cannot be blank.
     </span>
-    <script>
-      const project_description = document.getElementById("project_description");
-      const project_descriptiontrigger = document.getElementById("submit");
-      project_description.addEventListener("input", function () {
-        const project_descriptionpattern = /^[A-z]{1,}$/;
-        if (!project_descriptionpattern.test(this.value)) {
-          this.style.outline = "1px solid red";
-          project_description_info.style.display = "inline";
-        } else {
-          this.style.outline = "1px solid black";
-          project_description_info.style.display = "none";
-        }
-      });
-    </script>
     <br />
     <input
       id="url"
@@ -66,20 +38,6 @@
     <span id="url_info" style="display: none; color: red"
       >This must be a valid URL.
     </span>
-    <script>
-      const url = document.getElementById("url");
-      const urltrigger = document.getElementById("submit");
-      url.addEventListener("input", function () {
-        const urlpattern = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/;
-        if (!urlpattern.test(this.value)) {
-          this.style.outline = "1px solid red";
-          url_info.style.display = "inline";
-        } else {
-          this.style.outline = "1px solid black";
-          url_info.style.display = "none";
-        }
-      });
-    </script>
     <br />
     <input
       id="project_date_start"
@@ -94,20 +52,6 @@
     <span id="start_date_info" style="display: none; color: red"
       >The Start Date must be in YYYY-MM-DD Format.
     </span>
-    <script>
-      const start_date = document.getElementById("project_date_start");
-      const start_datetrigger = document.getElementById("submit");
-      start_date.addEventListener("input", function () {
-        const start_datepattern = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
-        if (!start_datepattern.test(this.value)) {
-          this.style.outline = "1px solid red";
-          start_date_info.style.display = "inline";
-        } else {
-          this.style.outline = "1px solid black";
-          start_date_info.style.display = "none";
-        }
-      });
-    </script>
     <br />
     <input
       id="project_date_end"
@@ -122,45 +66,101 @@
     <span id="end_date_info" style="display: none; color: red"
       >The End Date must be in YYYY-MM-DD Format.
     </span>
-    <script>
-      const end_date = document.getElementById("project_date_end");
-      const end_datetrigger = document.getElementById("submit");
-      end_date.addEventListener("input", function () {
-        const end_datepattern = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
-        if (!end_datepattern.test(this.value)) {
-          this.style.outline = "1px solid red";
-          end_date_info.style.display = "inline";
-        } else {
-          this.style.outline = "1px solid black";
-          end_date_info.style.display = "none";
-        }
-      });
-    </script>
     <br />
-    <input id="submit" type="submit" class="submit-button" />
-    <script>
-      const submitTrigger = document.getElementById("submit");
-      submitTrigger.addEventListener("click", function (e) {
-        e.preventDefault();
-        fetch("https://jsonplaceholder.typicode.com/posts", {
-          method: "POST",
-          body: JSON.stringify({
-            add_title: title.value,
-            project_description: project_description.value,
-            url: url.value,
-            start_date: start_date.value,
-            end_date: end_date.value
-          }),
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-          },
-        })
-          .then((response) => response.json())
-          .then((json) => console.log(json));
-      });
-    </script>
+    <button>Submit</button>
   </form>
   <br />
 </div>
-
+  <!-- Regex Scripts Begin -->
+  <script>
+    const title = document.getElementById("title");
+    const titletrigger = document.getElementById("submit");
+    title.addEventListener("input", function () {
+      const titlepattern = /^[A-z ]{1,}$/;
+      if (!titlepattern.test(this.value)) {
+        this.style.outline = "1px solid red";
+        title_info.style.display = "inline";
+      } else {
+        this.style.outline = "1px solid black";
+        title_info.style.display = "none";
+      }
+    });
+  </script>
+  <script>
+    const project_description = document.getElementById("project_description");
+    const project_descriptiontrigger = document.getElementById("submit");
+    project_description.addEventListener("input", function () {
+      const project_descriptionpattern = /^[A-z ,.]{1,}$/;
+      if (!project_descriptionpattern.test(this.value)) {
+        this.style.outline = "1px solid red";
+        project_description_info.style.display = "inline";
+      } else {
+        this.style.outline = "1px solid black";
+        project_description_info.style.display = "none";
+      }
+    });
+  </script>
+  <script>
+    const url = document.getElementById("url");
+    const urltrigger = document.getElementById("submit");
+    url.addEventListener("input", function () {
+      const urlpattern = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/;
+      if (!urlpattern.test(this.value)) {
+        this.style.outline = "1px solid red";
+        url_info.style.display = "inline";
+      } else {
+        this.style.outline = "1px solid black";
+        url_info.style.display = "none";
+      }
+    });
+  </script>
+  <script>
+    const start_date = document.getElementById("project_date_start");
+    const start_datetrigger = document.getElementById("submit");
+    start_date.addEventListener("input", function () {
+      const start_datepattern = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
+      if (!start_datepattern.test(this.value)) {
+        this.style.outline = "1px solid red";
+        start_date_info.style.display = "inline";
+      } else {
+        this.style.outline = "1px solid black";
+        start_date_info.style.display = "none";
+      }
+    });
+  </script>
+  <script>
+    const end_date = document.getElementById("project_date_end");
+    const end_datetrigger = document.getElementById("submit");
+    end_date.addEventListener("input", function () {
+      const end_datepattern = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
+      if (!end_datepattern.test(this.value)) {
+        this.style.outline = "1px solid red";
+        end_date_info.style.display = "inline";
+      } else {
+        this.style.outline = "1px solid black";
+        end_date_info.style.display = "none";
+      }
+    });
+  </script>
+  <script>
+    const submitTrigger = document.getElementById("submit");
+    submitTrigger.addEventListener("click", function (e) {
+      e.preventDefault();
+      fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+        body: JSON.stringify({
+          add_title: title.value,
+          project_description: project_description.value,
+          url: url.value,
+          start_date: start_date.value,
+          end_date: end_date.value,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+    });
+  </script>
 {% endblock %}

@@ -2,10 +2,12 @@
 <div id="main" class="proposal_info">
   <h1>Title: {{details.title}}</h1>
   <p class="project_description_details">
-    Project Description: {{details.project_description}}
+    <b>Project Description:</b> {{details.project_description}}
   </p>
-  <p>Web Mapping Application URL:</p>
-  <b>{{details.map_id}}</b>
+  <p>
+    <b>Web Mapping Application URL:</b>
+    <b><a href='{{details.map_id}}' target="blank">{{details.title}} Map</a></b>
+  </p>
 </div>
 <form action="{% url 'add_task' details.id %}" method="POST">
   {% csrf_token %}
@@ -18,6 +20,7 @@
       name="gantt_title"
       placeholder="Please Enter a Task for your Gantt Chart"
     />
+  </form>
     <script>
       // set value using id
       document.getElementById("Obtain GIS Data").value = "Obtain GIS Data";
@@ -140,20 +143,18 @@
       });
     </script>
     <br />
-    <a><button type="submit" class="submit-button_details">Add Task</button></a>
+    <a href="{% url 'add_task' details.id %}"><button type="submit" class="submit-button_details">Add Task</button></a>
   </div>
   <br />
   <div id="task_details" class="task_details">
     <ul>
       {% for t in details.task_set.all %}
-      <ul>
         <li class="task">
           <b>Task: </b>{{t.taskItem}}.<b> Start Date:</b>
           {{t.gantt_date_start}},
           <b>End Date:</b>{{t.gantt_date_end}}
-          <a><button type="submit" class="remove-button_details" name="delete_task" href="{% url 'delete_task' t.id %}">Remove Task</button></a
+          <a href="{% url 'delete_task' t.id %}"><button class="remove-button_details">Remove Task</button></a>
         </li>
-      </ul>
       {% endfor %}
     </ul>
   </div>
@@ -175,5 +176,4 @@
         .then((json) => console.log(json));
     });
   </script>
-</form>
 {% endblock %}

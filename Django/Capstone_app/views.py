@@ -7,7 +7,6 @@ from rest_framework import status
 from .serializers import TaskSerializer
 from rest_framework.response import Response
 
-
 @api_view(['GET'])
 def proposal_detail(request, pk, format=None):
     """
@@ -39,9 +38,8 @@ def add_proposal(request):
         map_id = request.POST['map_id']
         project_date_start = request.POST['project_date_start']
         project_date_end = request.POST['project_date_end']
-        gantt_title = request.POST['gantt_title']
         proposals = Proposal.objects.create(
-            title=title, project_description=project_description, map_id=map_id, gantt_title=gantt_title, project_date_start=project_date_start, project_date_end=project_date_end)
+            title=title, project_description=project_description, map_id=map_id, project_date_start=project_date_start, project_date_end=project_date_end)
         return redirect('add_proposal')
 
 

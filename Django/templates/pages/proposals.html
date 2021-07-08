@@ -17,8 +17,8 @@
         src="{{proposal.map_id}}"
         ></iframe>
         <div class="card-body">
-          <h5 class="card-title"><b>Title: {{proposal.title}}</b></h5>
-          <p class="card-text">Project Description: {{proposal.project_description}}</p>
+          <h5 class="card-title"><b>{{proposal.title}}</b></h5>
+          <p class="card-text">{{proposal.project_description}}</p>
           <p class="card-text"><small><b>Tasks:</b> {% for t in proposal.task_set.all %}
             <ul><b>{{t.taskItem}}.</b> Start Date: {{t.gantt_date_start}} End Date: {{t.gantt_date_end}}</ul>
           {% endfor %}</small></p>
