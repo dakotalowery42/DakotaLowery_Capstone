@@ -76,7 +76,7 @@
     const title = document.getElementById("title");
     const titletrigger = document.getElementById("submit");
     title.addEventListener("input", function () {
-      const titlepattern = /^[A-z ]{1,}$/;
+      const titlepattern = /^[A-Za-z0-9 _.,!"' ]{1,}$/;
       if (!titlepattern.test(this.value)) {
         this.style.outline = "1px solid red";
         title_info.style.display = "inline";
@@ -90,7 +90,7 @@
     const project_description = document.getElementById("project_description");
     const project_descriptiontrigger = document.getElementById("submit");
     project_description.addEventListener("input", function () {
-      const project_descriptionpattern = /^[A-z ,.]{1,}$/;
+      const project_descriptionpattern = /^[A-Za-z0-9 _.,!"' ]{1,}$/;
       if (!project_descriptionpattern.test(this.value)) {
         this.style.outline = "1px solid red";
         project_description_info.style.display = "inline";

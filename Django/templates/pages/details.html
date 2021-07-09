@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %} {% csrf_token %}
 <div id="main" class="proposal_info">
-  <h1>Title: {{details.title}}</h1>
+  <h1>{{details.title}}</h1>
   <p class="project_description_details">
     <b>Project Description:</b> {{details.project_description}}
   </p>

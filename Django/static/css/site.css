@@ -528,7 +528,7 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 200px;
+  width: auto;
   border-radius: 10px 10px 10px 10px;
   -moz-border-radius: 10px 10px 10px 10px;
   -webkit-border-radius: 10px 10px 10px 10px;
