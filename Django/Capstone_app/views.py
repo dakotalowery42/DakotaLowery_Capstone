@@ -55,7 +55,7 @@ def add_task(request, id):
     }
     Task.objects.create(taskItem=gantt_title, task_id=details,
                         gantt_date_start=gantt_date_start, gantt_date_end=gantt_date_end)
-    return render(request, 'pages/details.html', context)
+    return redirect('see_details', id=id)
 
 
 def delete_task(request, id):
@@ -101,7 +101,7 @@ def see_details(request, id):
         "details": details,
         "tasks": tasks
     }
-    return render(request, 'pages/details.html', context)
+    return render(request, 'pages/details.html', {"details": details})
 
 
 def serialized(request):

@@ -73,8 +73,10 @@ h1 {
 h1 span {
   background: rgb(0, 48, 135);
   color: white;
-  padding: 21 42px;
-  display: inline-block;
+  padding: 0 42px;
+  display:inline-block;
+  border-radius: 10px;
+  box-shadow: 0.25rem 0.25rem #ccc;
 }
 
 h2 {
@@ -105,6 +107,7 @@ h2 span {
   -moz-border-radius: 10px 10px 10px 10px;
   -webkit-border-radius: 10px 10px 10px 10px;
   border: 2px solid #7ac143;
+  box-shadow: 0.25rem 0.25rem #ccc;
 }
 
 h5 {
@@ -408,10 +411,13 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 10px 10px 10px 10px;
-  -moz-border-radius: 10px 10px 10px 10px;
-  -webkit-border-radius: 10px 10px 10px 10px;
   border: 2px solid #7ac143;
+}
+
+.button{
+  border-radius: 10px;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff', GradientType=0 );
+  box-shadow: 0.25rem 0.25rem #ccc;
 }
 
 /*CSS Tags for add_proposal END*/
@@ -527,6 +533,7 @@ button {
   -moz-border-radius: 10px 10px 10px 10px;
   -webkit-border-radius: 10px 10px 10px 10px;
   border: 2px solid #7ac143;
+  box-shadow: 0.25rem 0.25rem #ccc;
 }
 
 .link {
@@ -564,6 +571,7 @@ nav {
 }
 
 /* CSS for Proposal-View starts */
+
 .Project {
   padding: 20px;
 }
@@ -748,6 +756,7 @@ input {
   -moz-border-radius: 10px 10px 10px 10px;
   -webkit-border-radius: 10px 10px 10px 10px;
   border: 2px solid #7ac143;
+  box-shadow: 0.25rem 0.25rem #ccc;
 }
 
 
@@ -765,6 +774,7 @@ input {
   -moz-border-radius: 10px 10px 10px 10px;
   -webkit-border-radius: 10px 10px 10px 10px;
   border: 2px solid #7ac143;
+  box-shadow: 0.25rem 0.25rem #ccc;
 }
 
 h5.highcharts-description {
