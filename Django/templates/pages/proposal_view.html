@@ -7,16 +7,18 @@
   <p class="Project">Project Description: {{post.project_description}}</p>
 </div>
 <h5>Previously Created Web Mapping Application</h5>
-<div id="JAX" class="JAX">
-  <iframe
-    width="800"
-    height="700"
-    frameborder="1"
-    scrolling="yes"
-    marginheight="1"
-    marginwidth="1"
-    src="{{post.map_id}}"
-  ></iframe>
+<div class="proposalViewMap">
+  <div id="JAX" class="JAX" style="--aspect-ratio: 800/700">
+    <iframe
+      width="800"
+      height="700"
+      frameborder="1"
+      scrolling="yes"
+      marginheight="1"
+      marginwidth="1"
+      src="{{post.map_id}}"
+    ></iframe>
+  </div>
 </div>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/timeline.js"></script>
@@ -34,58 +36,59 @@
   fetch(`/proposal_detail/{{post.id}}`)
     .then((response) => response.json())
     .then((data) => {
-      var chart_data = []
-      data.forEach((i)=>
-      chart_data.push({name: i.taskItem, label: `Start: ${i.gantt_date_start}<br>End: ${i.gantt_date_end}`}));
-        const chart = new Highcharts.chart("container", {
-          chart: {
-            borderColor: "#003087",
-            borderWidth: 2,
-            backgroundColor: {
-              linearGradient: [0, 0, 500, 500],
-              stops: [
-                [0, "rgb(255, 255, 255)"],
-                [1, "rgb(0, 48, 135)"],
-              ],
-            },
-            type: "timeline",
+      var chart_data = [];
+      data.forEach((i) =>
+        chart_data.push({
+          name: i.taskItem,
+          label: `Start: ${i.gantt_date_start}<br>End: ${i.gantt_date_end}`,
+        })
+      );
+      const chart = new Highcharts.chart("container", {
+        chart: {
+          borderColor: "#003087",
+          borderWidth: 2,
+          backgroundColor: {
+            linearGradient: [0, 0, 500, 500],
+            stops: [
+              [0, "rgb(255, 255, 255)"],
+              [1, "rgb(0, 48, 135)"],
+            ],
           },
-          accessibility: {
-            screenReaderSection: {
-              beforeChartFormat:
-                "<h5>{chartTitle}</h5>" +
-                "<div>{typeDescription}</div>" +
-                "<div>{chartSubtitle}</div>" +
-                "<div>{chartLongdesc}</div>" +
-                "<div>{viewTableButton}</div>",
-            },
-            point: {
-              valueDescriptionFormat:
-                "{index}. {point.label}. {point.description}.",
-            },
+          type: "timeline",
+        },
+        accessibility: {
+          screenReaderSection: {
+            beforeChartFormat:
+              "<h5>{chartTitle}</h5>" +
+              "<div>{typeDescription}</div>" +
+              "<div>{chartSubtitle}</div>" +
+              "<div>{chartLongdesc}</div>" +
+              "<div>{viewTableButton}</div>",
           },
-          xAxis: {
-            visible: false,
+          point: {
+            valueDescriptionFormat:
+              "{index}. {point.label}. {point.description}.",
           },
-          yAxis: {
-            visible: false,
+        },
+        xAxis: {
+          visible: false,
+        },
+        yAxis: {
+          visible: false,
+        },
+        title: {
+          text: "{{post.title}} Project Timeline",
+        },
+        credits: {
+          enabled: false,
+        },
+        colors: ["#7ac143"],
+        series: [
+          {
+            data: chart_data,
           },
-          title: {
-            text: "{{post.title}} Project Timeline",
-          },
-          credits: {
-            enabled: false,
-          },
-          colors: ["#7ac143"],
-          series: [
-            {
-              data:
-                chart_data
-              ,
-            },
-          ],
-        });
+        ],
+      });
     });
 </script>
 {% endblock %}
-
