@@ -7,15 +7,17 @@
     {% for proposal in proposals%}
     <div class="col">
       <div class="card h-100">
-        <iframe
-        width="400"
-        height="300"
-        frameborder="1"
-        scrolling="yes"
-        marginheight="1"
-        marginwidth="1"
-        src="{{proposal.map_id}}"
-        ></iframe>
+        <div class="iframe">
+          <iframe
+          width="400"
+          height="300"
+          frameborder="1"
+          scrolling="yes"
+          marginheight="1"
+          marginwidth="1"
+          src="{{proposal.map_id}}"
+          ></iframe>
+        </div>
         <div class="card-body">
           <h5 class="card-title"><b>{{proposal.title}}</b></h5>
           <p class="card-text">{{proposal.project_description}}</p>

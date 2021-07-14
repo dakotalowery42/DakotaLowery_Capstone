@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Capstone_app',
     'rest_framework',
     'jquery',
+    'accounts',
 ]
 
 MIDDLEWARE = [

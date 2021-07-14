@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="" method="POST">
+<form class="form" action="" method="POST">
     <div id='author-form' class="form-group">
         {% csrf_token %}
         <label for="username">Username</label>
@@ -12,7 +12,9 @@
         <input class="form-control" type="text" name="first_name"><br>
         <label for="last_name">Last Name</label>
         <input class="form-control" type="text" name="last_name"><br>
+        <br>
         <button type="submit" class="btn btn-primary mb-2 mt-3">Submit</button>
+        <br>
     </div>
 </form>
 {% endblock %}
