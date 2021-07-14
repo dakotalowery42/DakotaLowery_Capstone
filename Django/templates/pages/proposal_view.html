@@ -31,7 +31,7 @@
   </h5>
 </figure>
 <script>
-  fetch(`http://127.0.0.1:8000/proposal_detail/{{post.id}}`)
+  fetch(`/proposal_detail/{{post.id}}`)
     .then((response) => response.json())
     .then((data) => {
       var chart_data = []

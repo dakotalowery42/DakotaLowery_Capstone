@@ -6,6 +6,7 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 from .serializers import TaskSerializer
 from rest_framework.response import Response
+from django.contrib.auth.decorators import login_required
 
 @api_view(['GET'])
 def proposal_detail(request, pk, format=None):
@@ -28,7 +29,7 @@ def proposal_detail(request, pk, format=None):
 def home(request):
     return render(request, 'pages/home.html')
 
-
+@login_required
 def add_proposal(request):
     if request.method == 'GET':
         return render(request, 'pages/add_proposal.html')
@@ -85,7 +86,7 @@ def tasks(request):
     }
     return render(request, 'pages/add_proposals.html', context)
 
-
+@login_required
 def proposal_view(request, id):
     post = Proposal.objects.get(id=id)
     print(post)
