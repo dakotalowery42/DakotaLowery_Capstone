@@ -1,38 +1,40 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <div class="container mt-3">
+  <h1 class="text-center font-weight-light text-center text-lg-left mt-4 mb-5">
+    Thumbnail Gallery
+  </h1>
 
-    <h1 class="text-center font-weight-light text-center text-lg-left mt-4 mb-5">
-        Thumbnail Gallery
-    </h1>
-
-    <div id="js-task"></div>
-    <a id="serializer" class="btn btn-secondary active" role="button" aria-pressed="true">Display Tasks</a>
-    
-    <script>
-        const sr = document.getElementById('serializer')
-        const container = document.getElementById('js-task')
-        function getData() {
-            fetch("http://127.0.0.1:8000/api-data/")
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data)
-                    for (let i = 0; i < data.length; i++) {
-                        console.log(data[i].taskItem)
-                        document.body.innerHTML += 
-                        `<div class="container mt-3">
-                            <p>task_id: ${data[i].task_id}<p>
-                            <p>taskItem: ${data[i].taskItem}<p>
-                            <p>gantt_date_start: ${data[i].gantt_date_start}<p>
-                            <p>gantt_date_end: ${data[i].gantt_date_end}<p>
-                        </div>`
-                    }
-                })
-        }
-        sr.addEventListener('click', () => {
-            getData()
-        })
-    </script>
+  <div id="js-task"></div>
+  <a
+    id="serializer"
+    class="btn btn-secondary active"
+    role="button"
+    aria-pressed="true"
+    >Display Tasks</a
+  >
 </div>
+<script>
+  const sr = document.getElementById("serializer");
+  const container = document.getElementById("js-task");
+  function getData() {
+    fetch("http://127.0.0.1:8000/api-data/")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        for (let i = 0; i < data.length; i++) {
+          console.log(data[i].taskItem);
+          document.body.innerHTML += `<div class="container mt-3">
+                        <p>task_id: ${data[i].task_id}<p>
+                        <p>taskItem: ${data[i].taskItem}<p>
+                        <p>gantt_date_start: ${data[i].gantt_date_start}<p>
+                        <p>gantt_date_end: ${data[i].gantt_date_end}<p>
+                    </div>`;
+        }
+      });
+  }
+  sr.addEventListener("click", () => {
+    getData();
+  });
+</script>
 {% endblock %}

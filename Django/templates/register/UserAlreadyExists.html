@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+<div class="alert">
+  <div class="alert alert-danger" role="alert">
+    <h5>This is Username is already taken!</h5>
+    <br><a href="{% url 'login'%}" class="alert-link">Click Here to Login</a></br>
+    <a href="{% url 'register'%}" class="alert-link">Click Here to Register</a>
+  </div>
+</div>
+<br>
+<div>
+    <h5><button class="proposal-button"><a class="link" href="{% url 'login'%}">Click Here to Login</a></button></h5>
+</div>
+<br>
+<div>
+    <h5><button class="proposal-button"><a class="link" href="{% url 'register'%}">Click Here to Register</a></button></h5>
+</div>
+<br>
+{% endblock %}

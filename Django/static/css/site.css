@@ -99,6 +99,15 @@ h2 span {
   display: inline-block;
 }
 
+h5 {
+  color: rgb(0, 48, 135);
+  font-family: "Myriad Pro";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .cdm-smith-button {
   color: #ffffff;
   background-color: #003087;
@@ -916,4 +925,13 @@ h5.highcharts-description {
     rgba(255, 255, 255, 1) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff', GradientType=0 );
+}
+
+.alertMessage {
+  font-family: "Myriad Pro";
+  width: 342px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
