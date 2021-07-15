@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %} {% csrf_token %}
 <br>
-<h5><button class="proposal-button"><a class="link" href="{% url 'add_proposal'%}">Add another Proposal</a></button></h5>
+<h5><button class="proposal-button"><a class="link" href="{% url 'add_proposal'%}">Add another Project</a></button></h5>
 <br>
 <ul>
   <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -30,7 +30,7 @@
             </p>
             <b>
             <p>
-              <button class="proposal-button"><a class="link" href="{% url 'proposal_view' proposal.id%}">View Final Proposal: {{ proposal.title }}</a></button>
+              <button class="proposal-button"><a class="link" href="{% url 'proposal_view' proposal.id%}">View Final Project: {{ proposal.title }}</a></button>
             </p>
           </div>
           </b>

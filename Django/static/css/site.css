@@ -126,13 +126,14 @@ h6 {
 }
 
 .cdm-smith-button {
+  font-size: small;
   color: #ffffff;
   background-color: #003087;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 342px;
+  width: 142px;
   border-radius: 10px 10px 10px 10px;
   -moz-border-radius: 10px 10px 10px 10px;
   -webkit-border-radius: 10px 10px 10px 10px;
