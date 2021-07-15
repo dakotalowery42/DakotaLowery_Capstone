@@ -46,6 +46,7 @@ def add_proposal(request):
             title=title, project_description=project_description, map_id=map_id, project_date_start=project_date_start, project_date_end=project_date_end)
         return redirect('add_proposal')
 
+
 @login_required
 def add_task(request, id):
     details = Proposal.objects.get(id=id)
@@ -61,6 +62,7 @@ def add_task(request, id):
                         gantt_date_start=gantt_date_start, gantt_date_end=gantt_date_end)
     return redirect('see_details', id=id)
 
+
 @login_required
 def delete_task(request, id):
     task = Task.objects.get(id=id)
@@ -73,6 +75,7 @@ def delete_task(request, id):
     }
     return render(request, 'pages/details.html', context)
 
+
 @login_required
 def proposals(request):
     proposals = Proposal.objects.all()
@@ -80,6 +83,7 @@ def proposals(request):
         'proposals': proposals
     }
     return render(request, 'pages/proposals.html', context)
+
 
 @login_required
 def tasks(request):
@@ -90,7 +94,6 @@ def tasks(request):
     return render(request, 'pages/add_proposals.html', context)
 
 
-@login_required
 def proposal_view(request, id):
     post = Proposal.objects.get(id=id)
     print(post)
@@ -98,6 +101,7 @@ def proposal_view(request, id):
         "post": post,
     }
     return render(request, 'pages/proposal_view.html', context)
+
 
 @login_required
 def see_details(request, id):
@@ -107,6 +111,7 @@ def see_details(request, id):
         "tasks": tasks
     }
     return render(request, 'pages/details.html', {"details": details})
+
 
 @login_required
 def serialized(request):
