@@ -1,21 +1,80 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<form class="form" id = 'author-form' action="" method="POST">
-    {% csrf_token %}
-    <h5>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp"
-                placeholder="Enter Username">
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" name='password' id="password" placeholder="Password">
-        </div>
-    </h5>
-    <br>
-    <button class="button">Submit</button>
-    <br>
+{% extends 'base.html' %} {% block content %}
+<form class="form" id="author-form" action="" method="POST">
+  {% csrf_token %}
+  <h2>Login</h2>
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      name="username"
+      id="username"
+      placeholder="Enter Username"
+    />
+    <span class="login_span" id="username_info" style="display: none; color: red"
+      >The Username cannot be blank.
+    </span>
+  </div>
+  <div class="form-group">
+    <input
+      type="password"
+      class="form-control"
+      name="password"
+      id="password"
+      placeholder="Password"
+    />
+    <span class="login_span" id="password_info" style="display: none; color: red"
+      >The Password must contain 8 characters, one number, and one sepcial
+      character.
+    </span>
+  </div>
+  <br />
+  <button class="button">Submit</button>
+  <br />
 </form>
+<script>
+  const username = document.getElementById("username");
+  const usernametrigger = document.getElementById("submit");
+  username.addEventListener("input", function () {
+    const usernamepattern = /^[A-Za-z0-9 ]{1,}$/;
+    if (!usernamepattern.test(this.value)) {
+      this.style.outline = "1px solid red";
+      username_info.style.display = "inline";
+    } else {
+      this.style.outline = "1px solid black";
+      username_info.style.display = "none";
+    }
+  });
+</script>
+<script>
+  const password = document.getElementById("password");
+  const passwordtrigger = document.getElementById("submit");
+  password.addEventListener("input", function () {
+    const passwordpattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+    if (!passwordpattern.test(this.value)) {
+      this.style.outline = "1px solid red";
+      password_info.style.display = "inline";
+    } else {
+      this.style.outline = "1px solid black";
+      password_info.style.display = "none";
+    }
+  });
+</script>
+<script>
+  const submitTrigger = document.getElementById("submit");
+  submitTrigger.addEventListener("click", function (e) {
+    e.preventDefault();
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      body: JSON.stringify({
+        add_username: username.value,
+        add_password: password.value,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+  });
+</script>
 {% endblock %}

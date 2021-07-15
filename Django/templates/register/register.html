@@ -1,20 +1,117 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <form class="form" action="" method="POST">
-    <div id='author-form' class="form-group">
-        {% csrf_token %}
-        <label for="username">Username</label>
-        <input class="form-control" type="text" name="username">
-        <label for="password">Password</label>
-        <input class="form-control" type="password" name="password">
-        <label for="first_name">First Name</label>
-        <input class="form-control" type="text" name="first_name"><br>
-        <label for="last_name">Last Name</label>
-        <input class="form-control" type="text" name="last_name"><br>
-        <br>
-        <button class="button">Submit</button>
-        <br>
-    </div>
+  <div id="author-form" class="form-group">
+    {% csrf_token %}
+    <label for="username">Username</label>
+    <input id="username" class="form-control" type="text" name="username" required />
+    <span
+      class="register_span"
+      id="username_info"
+      style="display: none; color: red"
+      >The Username cannot be blank.
+    </span>
+    <label for="password">Password</label>
+    <input id="password" class="form-control" type="password" name="password" required />
+    <span
+      class="register_span"
+      id="password_info"
+      style="display: none; color: red"
+      >The Password must contain 8 characters, one number, and one sepcial
+      character.
+    </span>
+    <label for="first_name">First Name</label>
+    <input id="first_name" class="form-control" type="text" name="first_name" required />
+    <span
+      class="register_span"
+      id="first_name_info"
+      style="display: none; color: red"
+      >The First Name cannot be blank.
+    </span>
+    <label for="last_name">Last Name</label>
+    <input id="last_name" class="form-control" type="text" name="last_name" required /><br />
+    <span
+      class="register_span"
+      id="last_name_info"
+      style="display: none; color: red"
+      >The Last Name cannot be blank.
+    </span>
+    <button class="button">Submit</button>
+  </div>
 </form>
+<script>
+  const username = document.getElementById("username");
+  const usernametrigger = document.getElementById("submit");
+  username.addEventListener("input", function () {
+    const usernamepattern = /^[A-Za-z0-9 ]{1,}$/;
+    if (!usernamepattern.test(this.value)) {
+      this.style.outline = "1px solid red";
+      username_info.style.display = "inline";
+    } else {
+      this.style.outline = "1px solid black";
+      username_info.style.display = "none";
+    }
+  });
+</script>
+<script>
+    const password = document.getElementById("password");
+    const passwordtrigger = document.getElementById("submit");
+    password.addEventListener("input", function () {
+      const passwordpattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+      if (!passwordpattern.test(this.value)) {
+        this.style.outline = "1px solid red";
+        password_info.style.display = "inline";
+      } else {
+        this.style.outline = "1px solid black";
+        password_info.style.display = "none";
+      }
+    });
+  </script>
+<script>
+    const first_name = document.getElementById("first_name");
+    const first_nametrigger = document.getElementById("submit");
+    first_name.addEventListener("input", function () {
+      const first_namepattern = /^[A-Za-z0-9 ]{1,}$/;
+      if (!first_namepattern.test(this.value)) {
+        this.style.outline = "1px solid red";
+        first_name_info.style.display = "inline";
+      } else {
+        this.style.outline = "1px solid black";
+        first_name_info.style.display = "none";
+      }
+    });
+  </script>
+  <script>
+    const last_name = document.getElementById("last_name");
+    const last_nametrigger = document.getElementById("submit");
+    last_name.addEventListener("input", function () {
+      const last_namepattern = /^[A-Za-z0-9 ]{1,}$/;
+      if (!last_namepattern.test(this.value)) {
+        this.style.outline = "1px solid red";
+        last_name_info.style.display = "inline";
+      } else {
+        this.style.outline = "1px solid black";
+        last_name_info.style.display = "none";
+      }
+    });
+  </script>
+<script>
+  const submitTrigger = document.getElementById("submit");
+  submitTrigger.addEventListener("click", function (e) {
+    e.preventDefault();
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      body: JSON.stringify({
+        add_username: username.value,
+        add_password: password.value,
+        add_first_name: first_name.value,
+        add_last_name: last_name.value,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+  });
+</script>
 {% endblock %}
