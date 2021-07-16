@@ -1,35 +1,39 @@
 {% extends 'base.html' %} {% block content %}
-<form class="form" id="author-form" action="" method="POST">
-  {% csrf_token %}
-  <h2>Login</h2>
-  <div class="form-group">
+<form class="form" action="" method="POST">
+  <div id="author-form" class="form-group">
+    {% csrf_token %}
+    <h2>Login</h2>
     <input
       type="text"
       class="form-control"
       name="username"
       id="username"
       placeholder="Enter Username"
-    />
-    <span class="login_span" id="username_info" style="display: none; color: red"
+    /><br />
+    <span
+      class="login_span"
+      id="username_info"
+      style="display: none; color: red"
       >The Username cannot be blank.
     </span>
-  </div>
-  <div class="form-group">
     <input
       type="password"
       class="form-control"
       name="password"
       id="password"
       placeholder="Password"
-    />
-    <span class="login_span" id="password_info" style="display: none; color: red"
+    /><br />
+    <span
+      class="login_span"
+      id="password_info"
+      style="display: none; color: red"
       >The Password must contain 8 characters, one number, and one sepcial
       character.
     </span>
+    <br />
+    <button class="button">Submit</button>
+    <br />
   </div>
-  <br />
-  <button class="button">Submit</button>
-  <br />
 </form>
 <script>
   const username = document.getElementById("username");
