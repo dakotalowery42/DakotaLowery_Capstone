@@ -692,13 +692,15 @@ nav {
   padding: 10px;
 }
 
-.iframe {
+.iframe-small {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 100px;
-  max-width: 300px;
+  min-width: 300px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 10px;
 }
 
 /* CSS for highcharts ends */
