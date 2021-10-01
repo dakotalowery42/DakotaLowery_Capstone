@@ -103,7 +103,7 @@ def proposal_view(request, id):
     return render(request, 'pages/proposal_view.html', context)
 
 
-@login_required
+
 def see_details(request, id):
     details = Proposal.objects.get(id=id)
     context = {
